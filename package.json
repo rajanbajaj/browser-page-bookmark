@@ -2,6 +2,7 @@
   "name": "browser-page-bookmark",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "LineMarks — line-level page bookmarks (vanilla MV3, no build).",
   "scripts": {
     "lint": "node --check src/lib/anchor.js && node --check src/lib/storage.js && node --check src/content.js && node --check src/background.js && node --check src/popup/popup.js && node --check src/dashboard/dashboard.js && node -e \"JSON.parse(require('fs').readFileSync('manifest.json','utf8'));console.log('manifest OK')\" && (npx --yes web-ext lint --source-dir . --ignore-files 'node_modules/**' 'docs/**' || echo 'web-ext lint skipped (no network?)')",

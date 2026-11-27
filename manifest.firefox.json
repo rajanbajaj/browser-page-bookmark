@@ -8,17 +8,17 @@
     "default_popup": "src/popup/popup.html",
     "default_title": "LineMarks",
     "default_icon": {
-      "16": "icons/icon-16.svg",
-      "32": "icons/icon-32.svg",
-      "48": "icons/icon-48.svg",
-      "128": "icons/icon-128.svg"
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
     }
   },
   "icons": {
-    "16": "icons/icon-16.svg",
-    "32": "icons/icon-32.svg",
-    "48": "icons/icon-48.svg",
-    "128": "icons/icon-128.svg"
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
   "background": {
     "scripts": ["src/lib/anchor.js", "src/lib/storage.js", "src/background.js"]
@@ -54,7 +54,10 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "linemarks@example.com",
-      "strict_min_version": "109.0"
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["browsingActivity", "websiteContent"]
+      }
     }
   }
 }

@@ -148,7 +148,7 @@ Settings = { theme, defaultColor, sort, declutterDefault } // sync, tiny
   obfuscation (plain minification OK), no remote code, per-data-type privacy
   disclosure (storage counts as user data → privacy policy URL required),
   per-permission justification, test-account/instructions to speed review.
-- **AMO (Firefox):** mandatory Mozilla signing; `gecko.id` required for MV3;
+- **AMO (Firefox):** mandatory Mozilla signing; `gecko.id` required for MV3; `gecko.data_collection_permissions.required` is mandatory for new submissions (we declare `["browsingActivity", "websiteContent"]` — saved URLs/titles and page quotes, stored on-device only);
   listed (public) vs unlisted/self-distributed (`web-ext sign`); manual review
   ~1–7 days; submit build sources separately when bundling/minifying;
   `<all_urls>` gets extra scrutiny.

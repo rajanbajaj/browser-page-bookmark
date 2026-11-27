@@ -13,7 +13,7 @@
   function renderColors(defaultColor) {
     picked = defaultColor;
     const row = $("colorRow");
-    row.innerHTML = "";
+    row.replaceChildren();
     for (const c of S.COLORS) {
       const b = document.createElement("button");
       b.className = "dot" + (c.id === picked ? " sel" : "");
@@ -127,7 +127,7 @@
       .sort((a, b) => b.createdAt - a.createdAt);
     $("resumeBtn").hidden = onPage.length === 0;
     const rl = $("recentList");
-    rl.innerHTML = "";
+    rl.replaceChildren();
     if (!onPage.length) {
       const li = document.createElement("li");
       li.className = "empty";
@@ -137,7 +137,7 @@
       onPage.slice(0, 10).forEach((b) => rl.appendChild(rowHtml(b)));
     }
     const ll = $("latestList");
-    ll.innerHTML = "";
+    ll.replaceChildren();
     all.sort((a, b) => b.createdAt - a.createdAt).slice(0, 5).forEach((b) => ll.appendChild(rowHtml(b)));
   }
 

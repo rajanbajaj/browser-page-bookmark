@@ -1,0 +1,3 @@
+/* Dashboard extras (layout specifics beyond shared styles.css). */
+.dash { min-height: 100vh; }
+#themeBtn { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; }

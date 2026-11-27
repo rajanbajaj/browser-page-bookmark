@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LineMarks</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body class="popup">
+<header class="pop-head">
+  <div class="pop-title" id="pageTitle">LineMarks</div>
+  <div class="pop-domain" id="pageDomain"></div>
+</header>
+<main>
+  <button id="saveBtn" class="primary">💾 Save this line</button>
+  <p class="hint" id="saveHint">Select text, or saves the viewport-center line.</p>
+  <div class="color-row" id="colorRow" role="radiogroup" aria-label="Highlight color"></div>
+  <label class="note-label" for="noteInput">Note</label>
+  <input id="noteInput" class="note-input" type="text" maxlength="2000" placeholder="Add a note... (Enter to save)">
+  <div id="statusLine" class="status" role="status"></div>
+  <div class="row-btns">
+    <button id="resumeBtn" class="secondary" hidden>▶ Resume last</button>
+    <button id="libraryBtn" class="linklike">Library →</button>
+  </div>
+  <h2 class="recent-h">Recent on this page</h2>
+  <ul id="recentList" class="recent"></ul>
+  <h2 class="recent-h">Latest overall</h2>
+  <ul id="latestList" class="recent"></ul>
+  <footer class="pop-foot"><a class="bmc" href="https://www.buymeacoffee.com/rbajaj.97" target="_blank" rel="noopener">☕ Buy me a coffee</a></footer>
+</main>
+<script src="../lib/anchor.js"></script>
+<script src="../lib/storage.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

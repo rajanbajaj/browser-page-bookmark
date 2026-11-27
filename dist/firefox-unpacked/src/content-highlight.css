@@ -1,0 +1,38 @@
+/* Injected content styles: toolbar, toast, mark fallback, text-fragment-ish flash. */
+::highlight(linemarks-yellow) { background: #ffe066; }
+::highlight(linemarks-green) { background: #8ce99a; }
+::highlight(linemarks-blue) { background: #99d5ff; }
+::highlight(linemarks-pink) { background: #ffb3d9; }
+::highlight(linemarks-orange) { background: #ffbf69; }
+
+.linemarks-mark { border-radius: 2px; padding: 0 1px; }
+.linemarks-yellow { background: #ffe066; }
+.linemarks-green { background: #8ce99a; }
+.linemarks-blue { background: #99d5ff; }
+.linemarks-pink { background: #ffb3d9; }
+.linemarks-orange { background: #ffbf69; }
+
+.linemarks-toolbar {
+  display: flex; gap: 6px; align-items: center;
+  background: #16181d; color: #fff; border-radius: 10px; padding: 6px 8px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.35); font: 13px/1.4 -apple-system, sans-serif;
+}
+.linemarks-toolbar .lm-save { background: #7048e8; color: #fff; border: 0; border-radius: 7px; padding: 5px 10px; font-weight: 650; }
+.linemarks-toolbar .lm-dots { display: flex; gap: 4px; }
+.linemarks-toolbar .lm-dot { width: 18px; height: 18px; border-radius: 50%; background: var(--dot); border: 2px solid transparent; padding: 0; }
+.linemarks-toolbar .lm-dot.sel { border-color: #fff; }
+.linemarks-toolbar .lm-note { background: none; border: 1px solid #555; color: #fff; border-radius: 7px; padding: 3px 8px; }
+.linemarks-toolbar .lm-already { color: #ffd8a8; font-weight: 600; }
+.linemarks-toolbar .lm-remove { background: #e03131; color: #fff; border: 0; border-radius: 7px; padding: 5px 10px; font-weight: 650; }
+
+.linemarks-toast {
+  position: fixed; right: 16px; bottom: 16px; z-index: 2147483647;
+  background: #16181d; color: #fff; border-radius: 10px; padding: 10px 14px;
+  font: 13px/1.4 -apple-system, sans-serif; display: flex; gap: 10px; align-items: center;
+}
+.linemarks-toast button { background: none; border: 1px solid #fff; color: #fff; border-radius: 6px; padding: 2px 8px; }
+
+.linemarks-flash.static { opacity: .9; }
+@media (prefers-reduced-motion: reduce) {
+  .linemarks-flash { animation: none !important; }
+}

@@ -139,12 +139,28 @@
     bar.className = "linemarks-toolbar";
     bar.setAttribute("role", "toolbar");
     bar.setAttribute("aria-label", "Save line bookmark");
-    const dots = S.COLORS.map((c) =>
-      `<button data-color="${c.id}" title="${c.label}" aria-label="Color ${c.label}" style="--dot:${c.css}" class="lm-dot${c.id === defaultColor ? " sel" : ""}"></button>`
-    ).join("");
-    bar.innerHTML =
-      `<button class="lm-save">Save</button><span class="lm-dots">${dots}</span>` +
-      `<button class="lm-note" title="Add note" aria-label="Add note">✎</button>`;
+    const saveBtn = document.createElement("button");
+    saveBtn.className = "lm-save";
+    saveBtn.textContent = "Save";
+    bar.appendChild(saveBtn);
+    const dotsWrap = document.createElement("span");
+    dotsWrap.className = "lm-dots";
+    for (const c of S.COLORS) {
+      const d = document.createElement("button");
+      d.dataset.color = c.id;
+      d.title = c.label;
+      d.setAttribute("aria-label", "Color " + c.label);
+      d.style.setProperty("--dot", c.css);
+      d.className = "lm-dot" + (c.id === defaultColor ? " sel" : "");
+      dotsWrap.appendChild(d);
+    }
+    bar.appendChild(dotsWrap);
+    const noteBtn = document.createElement("button");
+    noteBtn.className = "lm-note";
+    noteBtn.title = "Add note";
+    noteBtn.setAttribute("aria-label", "Add note");
+    noteBtn.textContent = "✎";
+    bar.appendChild(noteBtn);
     document.documentElement.appendChild(bar);
     let picked = defaultColor;
     bar.addEventListener("click", (e) => {
@@ -160,8 +176,7 @@
     const top = Math.max(8, anchorRect.top - 44);
     bar.style.cssText = `position:fixed;left:${Math.min(Math.max(8, anchorRect.left), innerWidth - 260)}px;top:${top}px;z-index:2147483647;`;
     toolbarEl = bar;
-    const first = bar.querySelector(".lm-save");
-    if (first) first.focus({ preventScroll: true });
+    saveBtn.focus({ preventScroll: true });
   }
 
   function showToast(msg, onUndo) {
@@ -206,7 +221,14 @@
     bar.className = "linemarks-toolbar";
     bar.setAttribute("role", "toolbar");
     bar.setAttribute("aria-label", "Remove line bookmark");
-    bar.innerHTML = `<span class="lm-already">Already saved</span><button class="lm-remove">Remove</button>`;
+    const already = document.createElement("span");
+    already.className = "lm-already";
+    already.textContent = "Already saved";
+    bar.appendChild(already);
+    const removeBtn = document.createElement("button");
+    removeBtn.className = "lm-remove";
+    removeBtn.textContent = "Remove";
+    bar.appendChild(removeBtn);
     document.documentElement.appendChild(bar);
     bar.addEventListener("click", async (e) => {
       if (!e.target.closest(".lm-remove")) return;

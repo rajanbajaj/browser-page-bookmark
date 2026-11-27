@@ -13,7 +13,7 @@
   function toast(msg, onUndo) {
     const t = $("toast");
     t.hidden = false;
-    t.innerHTML = "";
+    t.replaceChildren();
     t.append(document.createTextNode(msg));
     if (onUndo) {
       const u = document.createElement("button");
@@ -37,11 +37,17 @@
     const dSel = $("fDomain"), tSel = $("fTag"), cSel = $("fColor");
     const keep = (sel) => sel.value;
     const kd = keep(dSel), kt = keep(tSel), kc = keep(cSel);
-    dSel.innerHTML = '<option value="">All domains</option>';
+    dSel.replaceChildren();
+    {
+      const o = document.createElement("option"); o.value = ""; o.textContent = "All domains"; dSel.appendChild(o);
+    }
     for (const d of S.allDomains(all)) {
       const o = document.createElement("option"); o.value = d; o.textContent = d; dSel.appendChild(o);
     }
-    tSel.innerHTML = '<option value="">All tags</option>';
+    tSel.replaceChildren();
+    {
+      const o = document.createElement("option"); o.value = ""; o.textContent = "All tags"; tSel.appendChild(o);
+    }
     for (const t of S.allTags(all)) {
       const o = document.createElement("option"); o.value = t; o.textContent = "#" + t; tSel.appendChild(o);
     }
@@ -156,7 +162,7 @@
     const rows = S.applyFilters(all, f);
     $("countLine").textContent = `${rows.length} of ${all.length}`;
     const g = $("groups");
-    g.innerHTML = "";
+    g.replaceChildren();
     $("emptyState").hidden = all.length !== 0;
     $("noMatch").hidden = !(all.length && !rows.length);
     // Group by domain -> page(url).
@@ -208,7 +214,7 @@
     $("editNote").value = bm.note || "";
     $("editTags").value = (bm.tags || []).join(", ");
     const row = $("editColors");
-    row.innerHTML = "";
+    row.replaceChildren();
     for (const c of S.COLORS) {
       const b = document.createElement("button");
       b.type = "button";
