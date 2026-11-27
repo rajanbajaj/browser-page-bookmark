@@ -1,0 +1,60 @@
+{
+  "manifest_version": 3,
+  "name": "LineMarks — Line Bookmarks for Pages",
+  "short_name": "LineMarks",
+  "version": "0.1.0",
+  "description": "Save the exact line you stopped at on any page, auto-resume it on revisit, highlight it, and manage everything from a dashboard.",
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "LineMarks",
+    "default_icon": {
+      "16": "icons/icon-16.svg",
+      "32": "icons/icon-32.svg",
+      "48": "icons/icon-48.svg",
+      "128": "icons/icon-128.svg"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.svg",
+    "32": "icons/icon-32.svg",
+    "48": "icons/icon-48.svg",
+    "128": "icons/icon-128.svg"
+  },
+  "background": {
+    "scripts": ["src/lib/anchor.js", "src/lib/storage.js", "src/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/lib/anchor.js", "src/lib/storage.js", "src/content.js"],
+      "css": ["src/content-highlight.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": ["storage", "contextMenus", "alarms", "scripting", "activeTab"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+Shift+L" },
+      "description": "Open LineMarks popup"
+    },
+    "save-line": {
+      "suggested_key": { "default": "Alt+Shift+B" },
+      "description": "Bookmark current selection (or viewport-center line)"
+    }
+  },
+  "options_page": "src/dashboard/dashboard.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["src/dashboard/dashboard.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "linemarks@example.com",
+      "strict_min_version": "109.0"
+    }
+  }
+}

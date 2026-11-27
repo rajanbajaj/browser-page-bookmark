@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LineMarks Library</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dash">
+<header class="dash-head">
+  <div class="brand">🔖 LineMarks</div>
+  <input id="search" type="search" placeholder="/ Search title, URL, quote, note, tags…" aria-label="Search bookmarks">
+  <button id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+  <a class="bmc small" href="https://www.buymeacoffee.com/rbajaj.97" target="_blank" rel="noopener" title="Support LineMarks">☕ Buy me a coffee</a>
+</header>
+<div class="filterbar">
+  <select id="fDomain" aria-label="Filter by domain"><option value="">All domains</option></select>
+  <select id="fColor" aria-label="Filter by color"><option value="">All colors</option></select>
+  <select id="fTag" aria-label="Filter by tag"><option value="">All tags</option></select>
+  <select id="fStatus" aria-label="Filter by status">
+    <option value="">Any status</option><option value="anchored">Anchored</option><option value="orphaned">Moved/removed</option>
+  </select>
+  <select id="fDate" aria-label="Filter by date">
+    <option value="all">Any time</option><option value="today">Today</option><option value="week">Past week</option><option value="month">Past month</option>
+  </select>
+  <select id="sortSel" aria-label="Sort order">
+    <option value="recent">Most recent</option><option value="oldest">Oldest</option><option value="domain">Domain A–Z</option>
+  </select>
+  <span id="countLine" class="count" role="status"></span>
+  <span class="spacer"></span>
+  <button id="exportBtn" class="secondary">Export</button>
+  <button id="importBtn" class="secondary">Import</button>
+  <input id="importFile" type="file" accept="application/json,.json" hidden>
+</div>
+<main id="groups"></main>
+<div id="emptyState" class="empty-card" hidden>
+  <h2>Save your first line</h2>
+  <p>Three ways: right-click → <b>Bookmark this line</b> · <kbd>Alt+Shift+B</kbd> · select text and hit <b>Save</b>.</p>
+</div>
+<div id="noMatch" class="empty-card" hidden>
+  <p>No matches.</p><button id="clearBtn" class="secondary">Clear search</button>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+<dialog id="editDlg">
+  <form method="dialog" id="editForm">
+    <h3>Edit bookmark</h3>
+    <div class="color-row" id="editColors"></div>
+    <label>Note <input id="editNote" type="text" maxlength="2000"></label>
+    <label>Tags (comma-separated, max 10) <input id="editTags" type="text"></label>
+    <menu><button value="cancel" class="secondary">Cancel</button><button value="default" id="editSave" class="primary">Save</button></menu>
+  </form>
+</dialog>
+<script src="../lib/anchor.js"></script>
+<script src="../lib/storage.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
